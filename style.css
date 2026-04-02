@@ -11,7 +11,8 @@ h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    /*grid-template-columns: repeat(4, 100px);*/ /* 16 cards */
+    grid-template-columns: repeat(4, 100px); /* 12 cards */
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
