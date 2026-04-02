@@ -64,7 +64,7 @@ function verificarResultado() {
     let msg = "";
     /*if (tickets === 3) msg = "🏆 Você arrasou! Ganhou um brownie!";*/
     if (tickets === 3) {
-    msg = "🏆 Você ganhou um brownie!";
+    msg = "🏆 PARABÉNS! Você encontrou o Golden Ticket!";
 
     confetti({
         particleCount: 150,
