@@ -9,10 +9,9 @@ function gerarCartas() {
     let chance = Math.random();
 
     let qtdTickets = 0;
-    if (chance < 0.25) qtdTickets = 3;
-    else if (chance < 0.6) qtdTickets = 2;
-    else if (chance < 0.9) qtdTickets = 1;
-    else qtdTickets = 0;
+    if (chance < 0.35) qtdTickets = 3;
+    else if (chance < 0.75) qtdTickets = 2;
+    else qtdTickets = 1;
 
     let posicoes = [];
     while (posicoes.length < qtdTickets) {
