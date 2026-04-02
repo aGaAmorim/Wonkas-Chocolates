@@ -71,9 +71,10 @@ function gerarCartas() {
     let chance = Math.random();
 
     let qtdTickets = 0;
-    if (chance < 0.2) qtdTickets = 3;
-    else if (chance < 0.5) qtdTickets = 2;
-    else if (chance < 0.8) qtdTickets = 1;
+    if (chance < 0.25) qtdTickets = 3;
+    else if (chance < 0.6) qtdTickets = 2;
+    else if (chance < 0.9) qtdTickets = 1;
+    else qtdTickets = 0;
 
     let posicoes = [];
     while (posicoes.length < qtdTickets) {
@@ -123,9 +124,9 @@ function verificarResultado() {
 
     let msg = "";
     if (tickets === 3) msg = "🏆 Você ganhou um brownie!";
-    else if (tickets === 2) msg = "🎉 Quase! Ganhou um prêmio menor!";
-    else if (tickets === 1) msg = "🍬 Ganhou um brinde!";
-    else msg = "❌ Não foi dessa vez!";
+    else if (tickets === 2) msg = "🎉 Quase! Ganhou um prêmio da fábrica!";
+    else if (tickets === 1) msg = "🍬 Você ganhou um mimo da fábrica!";
+    else msg = "👀 Os chocolates mudaram de lugar… tente novamente!";
 
     document.getElementById("message").innerText = msg;
 }
