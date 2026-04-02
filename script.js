@@ -62,7 +62,16 @@ function verificarResultado() {
     });
 
     let msg = "";
-    if (tickets === 3) msg = "🏆 Você arrasou! Ganhou um brownie!";
+    /*if (tickets === 3) msg = "🏆 Você arrasou! Ganhou um brownie!";*/
+    if (tickets === 3) {
+    msg = "🏆 Você ganhou um brownie!";
+
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}
     else if (tickets === 2) msg = "🎉 Quase! Ganhou um presente da fábrica!";
     else if (tickets === 1) msg = "🍬 Você ganhou um mimo da fábrica!";
     else msg = "👀 Os chocolates mudaram de lugar… tente novamente!";
