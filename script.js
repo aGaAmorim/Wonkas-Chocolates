@@ -92,9 +92,11 @@ function verificarResultado() {
         document.getElementById("message").innerText += " | Fim das rodadas!";
     }
 }, 2000);
-    if (tickets === 0) {
+    if (tickets > 0) {
+    somGanhou.play();
+    } else {
     somPerdeu.play();
-}
+    }
 }
 
 function novaRodada() {
