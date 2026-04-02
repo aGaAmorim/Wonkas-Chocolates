@@ -60,6 +60,7 @@ h1 {
 
 .img-card {
     width: 70px;
+    transform: rotateY(180deg);
 }
 
 button {
