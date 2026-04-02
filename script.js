@@ -3,7 +3,8 @@ let cartas = [];
 let cliques = 0;
 
 function gerarCartas() {
-    cartas = new Array(16).fill("🍫");
+    //cartas = new Array(16).fill("🍫"); /* 16 cards */
+    cartas = new Array(12).fill("🍫");
 
     let chance = Math.random();
 
@@ -15,7 +16,8 @@ function gerarCartas() {
 
     let posicoes = [];
     while (posicoes.length < qtdTickets) {
-        let rand = Math.floor(Math.random() * 16);
+        //let rand = Math.floor(Math.random() * 16); /* 16 cards */
+        let rand = Math.floor(Math.random() * 12);
         if (!posicoes.includes(rand)) posicoes.push(rand);
     }
 
