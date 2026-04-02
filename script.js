@@ -9,7 +9,8 @@ const somPerdeu = new Audio("lose.mp3");
 
 function gerarCartas() {
     //cartas = new Array(16).fill("🍫"); /* 16 cards */
-    cartas = new Array(12).fill("🍫");
+    //cartas = new Array(12).fill("🍫");
+    cartas = new Array(12).fill("ticket");
 
     let chance = Math.random();
 
