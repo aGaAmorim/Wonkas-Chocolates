@@ -25,7 +25,8 @@ function gerarCartas() {
         if (!posicoes.includes(rand)) posicoes.push(rand);
     }
 
-    posicoes.forEach(i => cartas[i] = "🎟️");
+    /*posicoes.forEach(i => cartas[i] = "🎟️");*/
+    posicoes.forEach(i => cartas[i] = "ticket");
 }
 
 function render() {
@@ -51,7 +52,12 @@ function revelar(div, valor) {
     somVirar.currentTime = 0;
     somVirar.play().catch(() => {});
 
-    div.innerText = valor;
+    /*div.innerText = valor;*/
+    if (valor === "ticket") {
+    div.innerHTML = '<img src="ticket.png" class="img-card">';
+    } else {
+        div.innerText = "🍫";
+    }
     div.classList.add("revealed");
     cliques++;
 
@@ -65,7 +71,8 @@ function verificarResultado() {
     let tickets = 0;
 
     revelados.forEach(el => {
-        if (el.innerText === "🎟️") tickets++;
+        /*if (el.innerText === "🎟️") tickets++;*/
+        if (el.innerHTML.includes("ticket.png")) tickets++;
     });
 
     let msg = "";
