@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <title>Wonka’s Chocolate Game</title>
 <style>
+    <div id="modalSenha" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:10px; text-align:center; color:black;">
+        <h3>🔒 Área do Administrador</h3>
+        <input type="password" id="inputSenha" placeholder="Digite a senha" style="padding:10px; margin-top:10px;">
+        <br><br>
+        <button onclick="confirmarSenha()">Confirmar</button>
+    </div>
+</div>
 body {
     font-family: Arial;
     text-align: center;
@@ -132,12 +140,19 @@ function verificarResultado() {
 }
 
 function novaRodada() {
-    let senha = prompt("Digite a senha do administrador:");
+    document.getElementById("modalSenha").style.display = "flex";
+}
+
+function confirmarSenha() {
+    let senha = document.getElementById("inputSenha").value;
 
     if (senha !== senhaAdmin) {
         alert("Senha incorreta!");
         return;
     }
+
+    document.getElementById("modalSenha").style.display = "none";
+    document.getElementById("inputSenha").value = "";
 
     gerarCartas();
     render();
