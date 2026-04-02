@@ -49,7 +49,7 @@ function revelar(div, valor) {
     if (div.classList.contains("revealed") || cliques >= 3) return;
     
     somVirar.currentTime = 0;
-    somVirar.play();
+    somVirar.play().catch(() => {});
 
     div.innerText = valor;
     div.classList.add("revealed");
