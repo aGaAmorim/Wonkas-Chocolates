@@ -89,6 +89,14 @@ function confirmarSenha() {
     render();
 }
 
-// iniciar
-gerarCartas();
-render();
+window.onload = function() {
+    gerarCartas();
+    render();
+
+    document.getElementById("inputSenha").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            confirmarSenha();
+        }
+    });
+};
