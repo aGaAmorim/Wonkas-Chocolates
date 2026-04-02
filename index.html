@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Wonka’s Chocolate Game</title>
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #3b1f5c;
+    color: white;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+.revealed {
+    background: white;
+    color: black;
+    cursor: default;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🍫 Wonka’s Chocolate 🍫</h1>
+<p>Escolha 3 cartas e encontre os Golden Tickets!</p>
+
+<div class="grid" id="grid"></div>
+
+<p id="message"></p>
+
+<button onclick="novaRodada()">Nova Rodada</button>
+
+<script>
+const senhaAdmin = "1234";
+let cartas = [];
+let cliques = 0;
+
+function gerarCartas() {
+    cartas = new Array(16).fill("🍫");
+
+    let chance = Math.random();
+
+    let qtdTickets = 0;
+    if (chance < 0.2) qtdTickets = 3;
+    else if (chance < 0.5) qtdTickets = 2;
+    else if (chance < 0.8) qtdTickets = 1;
+
+    let posicoes = [];
+    while (posicoes.length < qtdTickets) {
+        let rand = Math.floor(Math.random() * 16);
+        if (!posicoes.includes(rand)) posicoes.push(rand);
+    }
+
+    posicoes.forEach(i => cartas[i] = "🎟️");
+}
+
+function render() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    cliques = 0;
+    document.getElementById("message").innerText = "";
+
+    cartas.forEach((item, index) => {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.innerText = "?";
+
+        div.onclick = () => revelar(div, item);
+
+        grid.appendChild(div);
+    });
+}
+
+function revelar(div, valor) {
+    if (div.classList.contains("revealed") || cliques >= 3) return;
+
+    div.innerText = valor;
+    div.classList.add("revealed");
+    cliques++;
+
+    if (cliques === 3) {
+        verificarResultado();
+    }
+}
+
+function verificarResultado() {
+    let revelados = document.querySelectorAll(".revealed");
+    let tickets = 0;
+
+    revelados.forEach(el => {
+        if (el.innerText === "🎟️") tickets++;
+    });
+
+    let msg = "";
+    if (tickets === 3) msg = "🏆 Você ganhou um brownie!";
+    else if (tickets === 2) msg = "🎉 Quase! Ganhou um prêmio menor!";
+    else if (tickets === 1) msg = "🍬 Ganhou um brinde!";
+    else msg = "❌ Não foi dessa vez!";
+
+    document.getElementById("message").innerText = msg;
+}
+
+function novaRodada() {
+    let senha = prompt("Digite a senha do administrador:");
+
+    if (senha !== senhaAdmin) {
+        alert("Senha incorreta!");
+        return;
+    }
+
+    gerarCartas();
+    render();
+}
+
+// inicia o jogo
+gerarCartas();
+render();
+</script>
+
+</body>
+</html>
