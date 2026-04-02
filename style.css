@@ -44,10 +44,11 @@ h1 {
 }
 
 .card.revealed {
-    transform: rotateY(180deg) scale(1.1);
+    transform: rotateY(180deg);
+    box-shadow: 0 0 15px gold;
 }
 
-.card:hover {
+.card:not(.revealed):hover {
     transform: scale(1.05);
 }
 
