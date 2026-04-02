@@ -3,56 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Wonka’s Chocolate Game</title>
-<style>
-    
-body {
-    font-family: Arial;
-    text-align: center;
-    background: #3b1f5c;
-    color: white;
-}
-
-h1 {
-    margin-top: 20px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.card {
-    width: 100px;
-    height: 100px;
-    background: gold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 10px;
-}
-
-.revealed {
-    background: white;
-    color: black;
-    cursor: default;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🍫 Wonka’s Chocolate's 🍫</h1
+<h1>🍫 Wonka’s Chocolate 🍫</h1>
 <p>Escolha 3 cartas e encontre os Golden Tickets!</p>
 
 <div class="grid" id="grid"></div>
@@ -61,108 +17,16 @@ button {
 
 <button onclick="novaRodada()">Nova Rodada</button>
 
-<script>
-const senhaAdmin = "1234";
-let cartas = [];
-let cliques = 0;
-
-function gerarCartas() {
-    cartas = new Array(16).fill("🍫");
-
-    let chance = Math.random();
-
-    let qtdTickets = 0;
-    if (chance < 0.25) qtdTickets = 3;
-    else if (chance < 0.6) qtdTickets = 2;
-    else if (chance < 0.9) qtdTickets = 1;
-    else qtdTickets = 0;
-
-    let posicoes = [];
-    while (posicoes.length < qtdTickets) {
-        let rand = Math.floor(Math.random() * 16);
-        if (!posicoes.includes(rand)) posicoes.push(rand);
-    }
-
-    posicoes.forEach(i => cartas[i] = "🎟️");
-}
-
-function render() {
-    const grid = document.getElementById("grid");
-    grid.innerHTML = "";
-    cliques = 0;
-    document.getElementById("message").innerText = "";
-
-    cartas.forEach((item, index) => {
-        let div = document.createElement("div");
-        div.className = "card";
-        div.innerText = "?";
-
-        div.onclick = () => revelar(div, item);
-
-        grid.appendChild(div);
-    });
-}
-
-function revelar(div, valor) {
-    if (div.classList.contains("revealed") || cliques >= 3) return;
-
-    div.innerText = valor;
-    div.classList.add("revealed");
-    cliques++;
-
-    if (cliques === 3) {
-        verificarResultado();
-    }
-}
-
-function verificarResultado() {
-    let revelados = document.querySelectorAll(".revealed");
-    let tickets = 0;
-
-    revelados.forEach(el => {
-        if (el.innerText === "🎟️") tickets++;
-    });
-
-    let msg = "";
-    if (tickets === 3) msg = "🏆 Você ganhou um brownie!";
-    else if (tickets === 2) msg = "🎉 Quase! Ganhou um prêmio da fábrica!";
-    else if (tickets === 1) msg = "🍬 Você ganhou um mimo da fábrica!";
-    else msg = "👀 Os chocolates mudaram de lugar… tente novamente!";
-
-    document.getElementById("message").innerText = msg;
-}
-
-function novaRodada() {
-    document.getElementById("modalSenha").style.display = "flex";
-}
-
-function confirmarSenha() {
-    let senha = document.getElementById("inputSenha").value;
-
-    if (senha !== senhaAdmin) {
-        alert("Senha incorreta!");
-        return;
-    }
-
-    document.getElementById("modalSenha").style.display = "none";
-    document.getElementById("inputSenha").value = "";
-
-    gerarCartas();
-    render();
-}
-
-// inicia o jogo
-gerarCartas();
-render();
-</script>
-
-    <div id="modalSenha" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
-    <div style="background:white; padding:20px; border-radius:10px; text-align:center; color:black;">
+<!-- Modal de senha -->
+<div id="modalSenha" class="modal">
+    <div class="modal-content">
         <h3>🔒 Área do Administrador</h3>
-        <input type="password" id="inputSenha" placeholder="Digite a senha" style="padding:10px; margin-top:10px;">
+        <input type="password" id="inputSenha" placeholder="Digite a senha">
         <br><br>
         <button onclick="confirmarSenha()">Confirmar</button>
     </div>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>
