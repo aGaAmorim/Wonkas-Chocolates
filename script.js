@@ -14,8 +14,8 @@ function gerarCartas() {
     let chance = Math.random();
 
     let qtdTickets = 0;
-    if (chance < 0.35) qtdTickets = 3;
-    else if (chance < 0.75) qtdTickets = 2;
+    if (chance < 0.45) qtdTickets = 3;
+    else if (chance < 0.85) qtdTickets = 2;
     else qtdTickets = 1;
 
     let posicoes = [];
