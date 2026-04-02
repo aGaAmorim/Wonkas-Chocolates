@@ -3,6 +3,10 @@ let cartas = [];
 let cliques = 0;
 let rodadasRestantes = 0;
 
+const somVirar = new Audio("flip.mp3");
+const somGanhou = new Audio("win.mp3");
+const somPerdeu = new Audio("lose.mp3");
+
 function gerarCartas() {
     //cartas = new Array(16).fill("🍫"); /* 16 cards */
     cartas = new Array(12).fill("🍫");
@@ -43,6 +47,9 @@ function render() {
 
 function revelar(div, valor) {
     if (div.classList.contains("revealed") || cliques >= 3) return;
+    
+    somVirar.currentTime = 0;
+    somVirar.play();
 
     div.innerText = valor;
     div.classList.add("revealed");
@@ -66,6 +73,7 @@ function verificarResultado() {
     if (tickets === 3) {
     msg = "🏆 PARABÉNS! Você encontrou o Golden Ticket!";
 
+    somGanhou.play();
     confetti({
         particleCount: 150,
         spread: 70,
@@ -84,6 +92,9 @@ function verificarResultado() {
         document.getElementById("message").innerText += " | Fim das rodadas!";
     }
 }, 2000);
+    if (tickets === 0) {
+    somPerdeu.play();
+}
 }
 
 function novaRodada() {
