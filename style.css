@@ -58,6 +58,10 @@ h1 {
     cursor: default;
 }
 
+.img-card {
+    width: 70px;
+}
+
 button {
     margin-top: 20px;
     padding: 10px 20px;
