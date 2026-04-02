@@ -1,6 +1,7 @@
 const senhaAdmin = "1234";
 let cartas = [];
 let cliques = 0;
+let rodadasRestantes = 0;
 
 function gerarCartas() {
     //cartas = new Array(16).fill("🍫"); /* 16 cards */
@@ -67,6 +68,13 @@ function verificarResultado() {
     else msg = "👀 Os chocolates mudaram de lugar… tente novamente!";
 
     document.getElementById("message").innerText = msg;
+    setTimeout(() => {
+    if (rodadasRestantes > 0) {
+        iniciarRodada();
+    } else {
+        document.getElementById("message").innerText += " | Fim das rodadas!";
+    }
+}, 2000);
 }
 
 function novaRodada() {
@@ -75,17 +83,40 @@ function novaRodada() {
 
 function confirmarSenha() {
     let senha = document.getElementById("inputSenha").value;
+    let qtd = parseInt(document.getElementById("qtdRodadas").value);
 
     if (senha !== senhaAdmin) {
         alert("Senha incorreta!");
         return;
     }
 
+    if (!qtd || qtd <= 0) {
+        alert("Digite uma quantidade válida!");
+        return;
+    }
+
+    rodadasRestantes = qtd;
+
     document.getElementById("modalSenha").style.display = "none";
     document.getElementById("inputSenha").value = "";
+    document.getElementById("qtdRodadas").value = "";
+
+    iniciarRodada();
+}
+
+function iniciarRodada() {
+    if (rodadasRestantes <= 0) {
+        alert("Rodadas encerradas!");
+        return;
+    }
 
     gerarCartas();
     render();
+
+    rodadasRestantes--;
+
+    document.getElementById("message").innerText =
+        "Rodadas restantes: " + rodadasRestantes;
 }
 
 window.onload = function() {
