@@ -39,7 +39,12 @@ h1 {
     cursor: pointer;
     font-size: 24px;
     border-radius: 10px;
-    transition: 0.3s;
+    /*transition: 0.3s;*/
+    transition: transform 0.3s, background 0.3s;
+}
+
+.card.revealed {
+    transform: rotateY(180deg) scale(1.1);
 }
 
 .card:hover {
