@@ -64,6 +64,10 @@ h1 {
     transform: rotateY(180deg);
 }
 
+.img-card-back {
+    width: 80px;
+}
+
 button {
     margin-top: 20px;
     padding: 10px 20px;
