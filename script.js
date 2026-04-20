@@ -16,7 +16,7 @@ function gerarCartas() {
 
     let qtdTickets = 0;
     //aumentar/diminuir chances
-    if (chance < 0.35) qtdTickets = 3;
+    if (chance < 0.45) qtdTickets = 3;
     else if (chance < 0.85) qtdTickets = 2;
     else qtdTickets = 1;
 
@@ -49,9 +49,9 @@ function render() {
 }
 
 function revelar(div, valor) {
-    //if (div.classList.contains("revealed") || cliques >= 3) return;
+    if (div.classList.contains("revealed") || cliques >= 3) return;
 
-    if (div.classList.contains("revealed") || cliques >= 4) return;
+    //if (div.classList.contains("revealed") || cliques >= 4) return;
     
     somVirar.currentTime = 0;
     somVirar.play().catch(() => {});
@@ -65,8 +65,8 @@ function revelar(div, valor) {
     div.classList.add("revealed");
     cliques++;
     
-    if (clique === 4) {
-    //if (cliques === 3) {
+    //if (clique === 4) {
+    if (cliques === 3) {
         verificarResultado();
     }
 }
