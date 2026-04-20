@@ -153,8 +153,7 @@ function iniciarRodada() {
 
     rodadasRestantes--;
 
-    /*document.getElementById("message").innerText =
-        "Rodadas restantes: " + rodadasRestantes;*/
+    document.getElementById("message").innerText = "Rodadas restantes: " + rodadasRestantes;
 }
 
 window.onload = function() {
