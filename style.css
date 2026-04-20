@@ -52,8 +52,8 @@ h1 {
 .grid {
     display: grid;
     /*grid-template-columns: repeat(4, 100px);*/ /* 16 cards */
-    grid-template-columns: repeat(3, 90px); /* 12 cards - px é tamanho do card */
-    gap: 12px;
+    grid-template-columns: repeat(3, 100px); /* 12 cards - px é tamanho do card */
+    gap: 10px;
     justify-content: center;
     margin-top: 10px;
 }
