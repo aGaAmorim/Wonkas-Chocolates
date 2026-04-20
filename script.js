@@ -40,7 +40,8 @@ function render() {
     cartas.forEach((item) => {
         let div = document.createElement("div");
         div.className = "card";
-        div.innerText = "?";
+        //div.innerText = "?";
+        div.innerText = '<img src="card-back.png" class="img-card-back">';
 
         div.onclick = () => revelar(div, item);
 
