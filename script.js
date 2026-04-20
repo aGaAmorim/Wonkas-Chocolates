@@ -41,7 +41,7 @@ function render() {
         let div = document.createElement("div");
         div.className = "card";
         //div.innerText = "?";
-        div.innerText = '<img src="card-back.png" class="img-card-back">';
+        div.innerHTML = '<img src="card-back.png" class="img-card-back">';
 
         div.onclick = () => revelar(div, item);
 
