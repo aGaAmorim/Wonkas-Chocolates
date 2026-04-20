@@ -8,19 +8,18 @@
 
 <body>
 
-<h1>
-    <img src="ticket.png" alt="Ticket" class="icone">
-    Wonka’s Chocolate's: The Game
-</h1>
-    <h2 id="contadorRodadas">Rodadas: 0</h2>
-    
-<p>Escolha 3 cartas e encontre os Golden Tickets!</p>
+<div class="top-bar">
+    <div id="contadorRodadas">Rodadas: 0</div>
 
-<div class="grid" id="grid"></div>
+    <h1>
+        <img src="ticket.png" alt="Ticket" class="icone">
+        Wonka’s Chocolate's
+    </h1>
 
-<p id="message"></p>
+    <button onclick="novaRodada()">Nova Rodada</button>
+</div>
 
-<button onclick="novaRodada()">Nova Rodada</button>
+<p class="subtitulo">Escolha 3 cartas e encontre os Golden Tickets!</p>
 
 <!-- Modal de senha -->
 <div id="modalSenha" class="modal">
