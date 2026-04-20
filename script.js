@@ -149,10 +149,12 @@ function iniciarRodada() {
     gerarCartas();
     render();
 
+    document.getElementById("contadorRodadas").innerText = "Rodadas: " + rodadasRestantes;
+
     rodadasRestantes--;
 
-    document.getElementById("message").innerText =
-        "Rodadas restantes: " + rodadasRestantes;
+    /*document.getElementById("message").innerText =
+        "Rodadas restantes: " + rodadasRestantes;*/
 }
 
 window.onload = function() {
