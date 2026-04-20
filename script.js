@@ -131,6 +131,7 @@ function confirmarSenha() {
     }
 
     rodadasRestantes = qtd;
+    document.getElementById("contadorRodadas").innerText = "Rodadas: " + rodadasRestantes;
 
     document.getElementById("modalSenha").style.display = "none";
     document.getElementById("inputSenha").value = "";
