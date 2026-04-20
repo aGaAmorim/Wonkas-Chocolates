@@ -6,6 +6,35 @@ body {
     color: white;
 }
 
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.top-bar h1 {
+    margin: 0;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#contadorRodadas {
+    background: #FADEE7;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+button {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
 h1 {
     /*margin-top: 20px; */
     display: flex;
@@ -23,10 +52,10 @@ h1 {
 .grid {
     display: grid;
     /*grid-template-columns: repeat(4, 100px);*/ /* 16 cards */
-    grid-template-columns: repeat(3, 100px); /* 12 cards - px é tamanho do card */
-    gap: 10px;
+    grid-template-columns: repeat(3, 90px); /* 12 cards - px é tamanho do card */
+    gap: 8px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .card {
@@ -94,14 +123,14 @@ button {
     color: black;
 }
 
+/*
 #contadorRodadas {
-    font-size: 28px;
+    font-size: 28px;x
     margin-top: 10px;
-    /*background: gold;*/
     background: #FADEE7;
     color: black;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 12px;
     font-weight: bold;
-}
+}*/
