@@ -53,7 +53,7 @@ h1 {
     display: grid;
     /*grid-template-columns: repeat(4, 100px);*/ /* 16 cards */
     grid-template-columns: repeat(3, 90px); /* 12 cards - px é tamanho do card */
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
     margin-top: 10px;
 }
